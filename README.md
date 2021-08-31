@@ -13,14 +13,6 @@ jugador 2 (derecha) las flechas arriba/abajo
 Esto es completamente configurable, dicha asignación de teclas se ecuentra aprox en la línea 200
 Con la tecla "p" puede devolver la pelota al centro de la pantalla, sin que se reinicie ningún puntaje.
 
-Error 1:
-En Ubuntu 16.04 con python 3.5 y pygame versión 2.0.1 el programa crashea al reproducir un sonido, con un error "Fatal Python error: take_gil: NULL tstate". 
-Desactivar el sonido debería ser suficiente para evitar que el error ocurra, desconozco el origen real del problema.
-
-Error 2:
-En Ubuntu mate 18.04 usar FULLSCREEN da problemas, en vez de mostrar el juego a pantalla completa muestra toda la pantalla en negro y no responde a alt+f4 para cerrarlo. Utilizar ctrl+alt+f1
-para abrir la terminal y matar al proceso usando htop o el gestor de procesos de su preferencia. Con desactivar FULLSCREEN (eliminando dicha opción) es suficiente para evitar que se presente el error.
-
 Sobre "Compilar.py":
 "Compilar.py" deja una versión compilada de "Pong.py".
 Al ejecutarse debería dejar dentro de una carpeta "pycache" el programa compilado en cuestión.
