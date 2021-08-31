@@ -12,7 +12,7 @@ def limpiar_pantalla():
 limpiar_pantalla()
 
 #Configuraciones
-puntaje_objetivo = 4 #Determina con cuantos puntos se gana
+puntaje_objetivo = 12 #Determina con cuantos puntos se gana
 resolución = (656,492)
 pygame.mixer.pre_init() #En Ubuntu 16.04 con python 3.5 y pygame versión __ el programa crashea al reproducir un sonido, más información en README
 pygame.init()
