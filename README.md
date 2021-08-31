@@ -1,9 +1,9 @@
 # Atari-Pong-pygame
-An atari pong clone made in python using pygame. 
+An atari pong clone made in python using pygame. I tried to make it as close to the original as possible.
 
 English:
 Player 1 (left) controls: 'w','s'
-Player 1 (right) controls: 'up arrow','down arrow'
+Player 2 (right) controls: 'up arrow','down arrow'
 This is completely configurable, said key assignment is located approx. On line 200
 With the "p" key you can return the ball to the center of the screen, without any score being reset.
 
