@@ -58,7 +58,7 @@ while valor_b < resolución[1]:
 	valor_b += 16
 
 rectangulos = (jugador1.rectangulo,jugador2.rectangulo,rectangulo1,rectangulo2,rectangulo3,rectangulo4) #lista de colisión
-clausulas = [False,False,False,False,False,False]
+clausulas = [False]*6
 
 #Acá se determina la pendiente inicial de la función lineal
 m1 = round(uniform(-0.67,0.67),5)
