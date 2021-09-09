@@ -14,8 +14,9 @@ jugador 1 (izquierda) utiliza "w" y "s"
 
 jugador 2 (derecha) las flechas arriba/abajo 
 
-Esto es completamente configurable, dicha asignación de teclas se ecuentra aprox en la línea 200
-Con la tecla "p" puede devolver la pelota al centro de la pantalla, sin que se reinicie ningún puntaje.
+Esto es completamente configurable, dicha asignación de teclas se ecuentra aproximadamente en la línea 200.
+
+Con la tecla "p" se puede devolver la pelota al centro de la pantalla, sin que se reinicie ningún puntaje.
 El juego proporciona una gran variedad de configuraciones desde aproximadamente la línea 14 hasta la 30.
 
 ## Sobre "Compilar.py":
