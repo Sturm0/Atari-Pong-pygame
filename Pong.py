@@ -4,13 +4,6 @@ from time import sleep
 from random import randint,uniform,choice
 from os import system, name
 
-def limpiar_pantalla():
-	if name == "nt":
-		system('cls')
-	else:
-		system('clear')
-limpiar_pantalla()
-
 #Configuraciones
 puntaje_objetivo = 12 #Determina con cuantos puntos se gana
 resolución = (656,492)
