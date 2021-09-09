@@ -14,11 +14,12 @@ limpiar_pantalla()
 #Configuraciones
 puntaje_objetivo = 12 #Determina con cuantos puntos se gana
 resolución = (656,492)
-pygame.mixer.pre_init() #En Ubuntu 16.04 con python 3.5 y pygame versión 2.0.1 el programa crashea al reproducir un sonido, más información en la sección de problemas de github
+
 pygame.init()
-pygame.mixer.init()
-sonido = pygame.mixer.Sound("pongblipf-5.wav")
-sonido.set_volume(0.5)
+sonido_act = True #Sonido activado
+if sonido_act == True:
+	sonido = pygame.mixer.Sound("pongblipf-5.wav")#En Ubuntu 16.04 con python 3.5 y pygame versión 2.0.1 el programa crashea al reproducir un sonido, más información en la sección de problemas de github
+	sonido.set_volume(0.5)
 miFuente = pygame.font.Font('pong-score.ttf',64)
 ventana = pygame.display.set_mode(resolución,flags=pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.SCALED) #Configuración de ventana, SCALED solo sirve para pygame 2 o superior desactivar si se esta usando una versión anterior. FULLSCREEN según pruebas da problemas en ciertos casos
 puntJugador1 = 0
@@ -98,7 +99,8 @@ def trayectoria(índice):
 			
 		elif pelota.collidelist(rectangulos) == índice and estado == True: #Estado fue creado para solucionar un error de origen real desconocido, consultar las notas sobre el programa
 			div = darvuelta(div,0)
-			sonido.play()
+			if sonido_act == True:
+				sonido.play()
 			y = pelota.top
 			nuev_x = x
 
