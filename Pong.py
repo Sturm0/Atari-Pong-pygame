@@ -5,7 +5,7 @@ from random import randint,uniform,choice
 from os import system, name
 
 #Configuraciones
-puntaje_objetivo = 12 #Determina con cuantos puntos se gana
+puntaje_objetivo = 100 #Determina con cuantos puntos se gana
 resolución = (656,492)
 
 pygame.init()
@@ -14,7 +14,7 @@ if sonido_act == True:
 	sonido = pygame.mixer.Sound("pongblipf-5.wav")#En Ubuntu 16.04 con python 3.5 y pygame versión 2.0.1 el programa crashea al reproducir un sonido, más información en la sección de problemas de github
 	sonido.set_volume(0.5)
 miFuente = pygame.font.Font('pong-score.ttf',64)
-ventana = pygame.display.set_mode(resolución,flags=pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.SCALED) #Configuración de ventana, SCALED solo sirve para pygame 2 o superior desactivar si se esta usando una versión anterior. FULLSCREEN según pruebas da problemas en ciertos casos
+ventana = pygame.display.set_mode(resolución,flags=pygame.FULLSCREEN|pygame.HWSURFACE|pygame.DOUBLEBUF|pygame.SCALED)#Configuración de ventana, SCALED solo sirve para pygame 2 o superior desactivar si se esta usando una versión anterior. FULLSCREEN según pruebas da problemas en ciertos casos
 puntJugador1 = 0
 puntJugador2 = 0
 mostrPuntj1 = miFuente.render("0",0,(255,255,255))
@@ -140,17 +140,32 @@ def caso_especial(jugador,lado):
 	nuev_x = resolución[0]/2
 	y = resolución[1]/2
 	x = round(resolución[0]/2)
-	div = round(uniform(-0.67,0.67),5)
-	while abs(div) < 0.14: #si es 0 la trayectoria de la pelota nunca va a cambiar y si es muy poca el juego va a ser aburrido
-		div = round(uniform(-0.67,0.67),5)
 	elección = choice((False,True))
-
+	#Esta parte sirve para que la trayectoria inicial de la pelota sea en el cuadrante que esta el jugador correspondiente. 
+	if elección:
+		if jugador2.rectangulo.top >= resolución[1]/2:
+			div = round(uniform(0,0.67),5)
+			while abs(div) < 0.14: #si es 0 la trayectoria de la pelota nunca va a cambiar y si es muy poca el juego va a ser aburrido
+				div = round(uniform(0,0.67),5)
+		else:
+			div = round(uniform(-0.67,0),5)
+			while abs(div) < 0.14:
+				div = round(uniform(-0.67,0),5)
+	else:
+		if jugador1.rectangulo.top >= resolución[1]/2:
+			div = round(uniform(-0.67,0),5)
+			while abs(div) < 0.14:
+				div = round(uniform(-0.67,0),5)
+		else:
+			div = round(uniform(0,0.67),5)
+			while abs(div) < 0.14:
+				div = round(uniform(0,0.67),5)
+	
 nuev_x = resolución[0]/2 #Nuevo eje de coordenadas
 y = resolución[1]/2
 while True:
 	ventana.fill((0,0,0))
 	posY = randint(0,resolución[1])
-	
 	if pelota.collidelist(rectangulos) <= -1 and not True in clausulas:
 		pelota.top = ((div)*(x - resolución[0]/2))+resolución[1]/2
 		pelota.left = x
