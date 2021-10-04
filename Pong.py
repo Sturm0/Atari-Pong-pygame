@@ -141,9 +141,10 @@ def caso_especial(jugador,lado):
 	y = resolución[1]/2
 	x = round(resolución[0]/2)
 	elección = choice((False,True))
-	#Esta parte sirve para que la trayectoria inicial de la pelota sea en el cuadrante que esta el jugador correspondiente. 
-	if elección:
-		if jugador2.rectangulo.top >= resolución[1]/2:
+	#Esta parte sirve para que la trayectoria inicial de la pelota sea en el cuadrante que esta el jugador correspondiente.
+	#Todavía no se me ocurre un nombre adecuado para esta función
+	def __acambiar(caso,division):
+		if caso == 0:
 			div = round(uniform(0,0.67),5)
 			while abs(div) < 0.14: #si es 0 la trayectoria de la pelota nunca va a cambiar y si es muy poca el juego va a ser aburrido
 				div = round(uniform(0,0.67),5)
@@ -151,15 +152,17 @@ def caso_especial(jugador,lado):
 			div = round(uniform(-0.67,0),5)
 			while abs(div) < 0.14:
 				div = round(uniform(-0.67,0),5)
+
+	if elección:
+		if jugador2.rectangulo.top >= resolución[1]/2:
+			__acambiar(0,div)
+		else:
+			__acambiar(1,div)
 	else:
 		if jugador1.rectangulo.top >= resolución[1]/2:
-			div = round(uniform(-0.67,0),5)
-			while abs(div) < 0.14:
-				div = round(uniform(-0.67,0),5)
+			__acambiar(1,div)
 		else:
-			div = round(uniform(0,0.67),5)
-			while abs(div) < 0.14:
-				div = round(uniform(0,0.67),5)
+			__acambiar(0,div)
 	
 nuev_x = resolución[0]/2 #Nuevo eje de coordenadas
 y = resolución[1]/2
