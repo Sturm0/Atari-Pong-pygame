@@ -1,6 +1,6 @@
 import pygame, sys
 from pygame.locals import *
-from time import sleep
+from time import sleep, time
 from random import randint,uniform,choice
 from os import system, name
 
@@ -167,6 +167,7 @@ def caso_especial(jugador,lado):
 nuev_x = resolución[0]/2 #Nuevo eje de coordenadas
 y = resolución[1]/2
 while True:
+	tiempo1 = time()
 	ventana.fill((0,0,0))
 	posY = randint(0,resolución[1])
 	if pelota.collidelist(rectangulos) <= -1 and not True in clausulas:
@@ -229,6 +230,8 @@ while True:
 	pygame.draw.rect(ventana,(255,255,255),pelota)
 	ventana.blit(mostrPuntj1,(166,33))
 	ventana.blit(mostrPuntj2,(resolución[0]-166-32,33))
-
-	sleep(1/60) #Determina los FPS, la velocidad del juego esta ligada a los mismos.
 	pygame.display.update()
+	tiempo2 = time()
+	tiempo_a_dormir = (1/60)-(tiempo2-tiempo1) #Determina los FPS, la velocidad del juego esta ligada a los mismos.
+	if tiempo_a_dormir > 0:
+		sleep(tiempo_a_dormir) 
