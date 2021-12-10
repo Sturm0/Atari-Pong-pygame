@@ -7,6 +7,7 @@ from os import system, name
 #Configuraciones
 puntaje_objetivo = 100 #Determina con cuantos puntos se gana
 resolución = (656,492)
+contra_cpu = True
 
 pygame.init()
 sonido_act = True #Sonido activado
@@ -201,10 +202,14 @@ while True:
 		jugador1.rectangulo.top -= velocidad
 	if keys[K_s]:
 		jugador1.rectangulo.top += velocidad
-	if keys[K_UP]:
-		jugador2.rectangulo.top -= velocidad
-	if keys[K_DOWN]:
-		jugador2.rectangulo.top += velocidad
+	if not contra_cpu:
+		if keys[K_UP]:
+			jugador2.rectangulo.top -= velocidad
+		if keys[K_DOWN]:
+			jugador2.rectangulo.top += velocidad
+	else:
+		jugador2.rectangulo.top = pelota.top
+
 
 	for event in pygame.event.get():
 		if event.type == QUIT:
