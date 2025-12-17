@@ -36,3 +36,5 @@ La solución provisional llevo a crear una función "estado" que cambiara luego 
 Otras notas sobre el programa:
 A partir de la línea 14 hasta la 30 se puede acceder a diferentes configuraciones que podrían ser interesantes para el usuario (cuando fue redactado este documento en ese rango de líneas se encontraba,
 pudo haber cambiado para cuando estes leyendo esto).
+
+![captura del pong](captura pantalla pong.png)
